@@ -13,7 +13,7 @@
 
 import pandas as pd
 
-df = pd.read_csv('data_week2_assets/NISPUF17.csv', index_col=0)
+df = pd.read_csv('assets/NISPUF17.csv', index_col=0)
 df.head()
 
 #We are going to use column EDUC1 for mother's education
@@ -54,7 +54,7 @@ print("\n")
 
 import pandas as pd
 
-df = pd.read_csv('data_week2_assets/NISPUF17.csv', index_col=0)
+df = pd.read_csv('assets/NISPUF17.csv', index_col=0)
 
 def average_influenza_doses():
     # YOUR CODE HERE
@@ -101,7 +101,7 @@ print("\n")
 
 import pandas as pd
 
-df = pd.read_csv('data_week2_assets/NISPUF17.csv', index_col=0)
+df = pd.read_csv('assets/NISPUF17.csv', index_col=0)
 #Replace all '77' and '99' values by 0
 df['HAD_CPOX'] = df['HAD_CPOX'].replace([77, 99], 0)
 
@@ -146,7 +146,7 @@ def corr_chickenpox():
     import numpy as np
     import pandas as pd
 
-    df = pd.read_csv('data_week2_assets/NISPUF17.csv', index_col=0)
+    df = pd.read_csv('assets/NISPUF17.csv', index_col=0)
     #Replace all '77' and '99' values by 0
     df['HAD_CPOX'] = df['HAD_CPOX'].replace([77, 99], 0)
 
