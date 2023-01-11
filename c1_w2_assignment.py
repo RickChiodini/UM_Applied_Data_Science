@@ -58,29 +58,14 @@ df = pd.read_csv('assets/NISPUF17.csv', index_col=0)
 
 def average_influenza_doses():
     # YOUR CODE HERE
-    #Create a copy of the df to query only the child data which we know they had either had breastmilk as a child, or not
-    new_df = df[(df['CBF_01'] == 1) | (df['CBF_01'] == 2)]
-    #Fill out all NaN as 0 doses
-    new_df['P_NUMFLU'].fillna(0, inplace=True)
-
     #Create two vars, one for all breastfed children, and the other with all non-breastfed children
-    bmilk_vax = new_df[(new_df['CBF_01'] == 1)]
-    no_bmilk_vax = new_df[(new_df['CBF_01'] == 2)]
+    bmilk_vax = df[(df['CBF_01'] == 1)]
+    no_bmilk_vax = df[(df['CBF_01'] == 2)]
 
-    #Create a list of the number of influenza doses each child group received, to later iterate over
-    bmv_list = list(bmilk_vax['P_NUMFLU'])
-    nbmv_list = list(no_bmilk_vax['P_NUMFLU'])
-
-    #Calculate the total number of vax doses per group, and create vars to store the proportion ratio for each group
-    bmv_total_doses = 0
-    nbmv_total_doses = 0
-    for x in bmv_list:
-        bmv_total_doses += x
-    doses_bf_child = bmv_total_doses/len(bmilk_vax)
-    for y in nbmv_list:
-        nbmv_total_doses += y
-    doses_nbf_child = nbmv_total_doses/len(no_bmilk_vax)
-  
+    #Retrieves the mean of the vaccine doses per child group
+    doses_bf_child = bmilk_vax['P_NUMFLU'].mean()
+    doses_nbf_child = no_bmilk_vax['P_NUMFLU'].mean()
+    
     return (doses_bf_child, doses_nbf_child)
   
   
